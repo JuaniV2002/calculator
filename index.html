@@ -1,97 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Calculator</title>
   <style>
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      background: linear-gradient(135deg, #eceff1, #cfd8dc);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background-color: #f0f0f0;
     }
+
     #calculator {
-      width: 320px;
-      background-color: #222;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      width: 320px;
     }
+
     #display {
-      width: 100%;
-      height: 60px;
+      background: #37474f;
+      color: #ffffff;
       text-align: right;
-      font-size: 36px;
-      padding: 0 10px;
-      margin-bottom: 20px;
-      background-color: #fff;
-      line-height: 60px;
-      border-radius: 5px;
+      border-radius: 10px;
+      font-size: 2rem;
+      padding: 15px;
+      margin-bottom: 15px;
       box-sizing: border-box;
+      overflow-x: auto;
     }
+
     #buttons {
       display: grid;
-      grid-template-columns: repeat(4, 70px);
-      grid-gap: 10px;
-      justify-content: center;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
     }
+
     .button {
-      width: 70px;
-      height: 70px;
-      font-size: 24px;
       border: none;
-      border-radius: 5px;
-      background-color: #333;
-      color: #fff;
+      background: linear-gradient(145deg, #eceff1, #b0bec5);
+      color: #37474f;
+      height: 60px;
+      border-radius: 10px;
+      font-size: 1.5rem;
       cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.1s;
     }
-    .button:hover {
-      background-color: #555;
+
+    .button:active {
+      transform: translateY(2px);
+      box-shadow: none;
     }
+
     .operator {
-      background-color: #f39c12;
+      background: linear-gradient(145deg, #ff8a65, #ff7043);
+      color: #ffffff;
     }
-    .operator:hover {
-      background-color: #e67e22;
-    }
+
     #equals {
-      background-color: #27ae60;
+      background: linear-gradient(145deg, #26c6da, #00acc1);
+      color: #ffffff;
       grid-column: span 2;
     }
-    #equals:hover {
-      background-color: #2ecc71;
-    }
+
     #clear, #backspace {
-      background-color: #c0392b;
-    }
-    #clear:hover, #backspace:hover {
-      background-color: #e74c3c;
+      background: linear-gradient(145deg, #ef5350, #e53935);
+      color: #ffffff;
     }
   </style>
 </head>
 <body>
   <div id="calculator">
     <div id="display">0</div>
-    <button class="button" id="clear">C</button>
-    <button class="button" id="backspace">&larr;</button>
-    <button class="button operator" data-operator="+">+</button>
-    <button class="button operator" data-operator="-">-</button>
-    <button class="button operator" data-operator="*">&times;</button>
-    <button class="button operator" data-operator="/">&divide;</button><br>
-    <button class="button digit" data-digit="7">7</button>
-    <button class="button digit" data-digit="8">8</button>
-    <button class="button digit" data-digit="9">9</button><br>
-    <button class="button digit" data-digit="4">4</button>
-    <button class="button digit" data-digit="5">5</button>
-    <button class="button digit" data-digit="6">6</button><br>
-    <button class="button digit" data-digit="1">1</button>
-    <button class="button digit" data-digit="2">2</button>
-    <button class="button digit" data-digit="3">3</button><br>
-    <button class="button digit" data-digit="0">0</button>
-    <button class="button" id="decimal">.</button>
-    <button class="button" id="equals">=</button>
+    <div id="buttons">
+      <button class="button" id="clear">C</button>
+      <button class="button" id="backspace">&larr;</button>
+      <button class="button operator" data-operator="/">&divide;</button>
+      <button class="button operator" data-operator="*">&times;</button>
+      <button class="button digit" data-digit="7">7</button>
+      <button class="button digit" data-digit="8">8</button>
+      <button class="button digit" data-digit="9">9</button>
+      <button class="button operator" data-operator="-">-</button>
+      <button class="button digit" data-digit="4">4</button>
+      <button class="button digit" data-digit="5">5</button>
+      <button class="button digit" data-digit="6">6</button>
+      <button class="button operator" data-operator="+">+</button>
+      <button class="button digit" data-digit="1">1</button>
+      <button class="button digit" data-digit="2">2</button>
+      <button class="button digit" data-digit="3">3</button>
+      <button class="button" id="decimal">.</button>
+      <button class="button digit" data-digit="0">0</button>
+      <button class="button" id="equals">=</button>
+    </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
