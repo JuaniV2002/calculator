@@ -1,4 +1,4 @@
-## 1. Simple Calculator
+## Simple Calculator
 
 ### Overview
 A sleek and user-friendly web-based calculator built with HTML, CSS, and JavaScript.
