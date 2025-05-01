@@ -18,4 +18,4 @@ A sleek and user-friendly web-based calculator built with HTML, CSS, and JavaScr
 - JavaScript
 
 ### Screenshots
-*(Optional)* Include screenshots demonstrating the calculator in use.
+![calculator](https://github.com/user-attachments/assets/2985c642-d1c9-40ee-9200-74d65b331a3b)
