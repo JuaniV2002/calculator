@@ -17,5 +17,5 @@ A sleek and user-friendly web-based calculator built with HTML, CSS, and JavaScr
 - CSS
 - JavaScript
 
-### Screenshots
+### Screenshot
 ![calculator](https://github.com/user-attachments/assets/2985c642-d1c9-40ee-9200-74d65b331a3b)
