@@ -1,78 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modern Calculator</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #eceff1, #cfd8dc);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-    }
-
-    #calculator {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-      padding: 20px;
-      width: 320px;
-    }
-
-    #display {
-      background: #37474f;
-      color: #ffffff;
-      text-align: right;
-      border-radius: 10px;
-      font-size: 2rem;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-sizing: border-box;
-      overflow-x: auto;
-    }
-
-    #buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
-    .button {
-      border: none;
-      background: linear-gradient(145deg, #eceff1, #b0bec5);
-      color: #37474f;
-      height: 60px;
-      border-radius: 10px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: transform 0.1s, box-shadow 0.1s;
-    }
-
-    .button:active {
-      transform: translateY(2px);
-      box-shadow: none;
-    }
-
-    .operator {
-      background: linear-gradient(145deg, #ff8a65, #ff7043);
-      color: #ffffff;
-    }
-
-    #equals {
-      background: linear-gradient(145deg, #26c6da, #00acc1);
-      color: #ffffff;
-      grid-column: span 2;
-    }
-
-    #clear, #backspace {
-      background: linear-gradient(145deg, #ef5350, #e53935);
-      color: #ffffff;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="calculator">
