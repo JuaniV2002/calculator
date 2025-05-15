@@ -9,8 +9,7 @@ A sleek and user-friendly web-based calculator built with HTML, CSS, and JavaScr
 - Clean, modern UI with subtle animations and gradient buttons.
 
 ### Usage
-1. Open `index.html` in your web browser.
-2. Click buttons to perform calculations.
+[Click here!](https://juaniv2002.github.io/calculator/)
 
 ### Technologies
 - HTML
