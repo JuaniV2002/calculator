@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modern Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="calculator">
-    <div id="display">0</div>
+    <div id="display-container">
+      <input type="text" id="expression" readonly />
+      <div id="result">0</div>
+    </div>
+
     <div id="buttons">
       <button class="button" id="clear">C</button>
-      <button class="button" id="backspace">&larr;</button>
+      <button class="button" id="backspace">⌫</button>
       <button class="button operator" data-operator="/">&divide;</button>
       <button class="button operator" data-operator="*">&times;</button>
       <button class="button digit" data-digit="7">7</button>
@@ -27,8 +31,13 @@
       <button class="button digit" data-digit="3">3</button>
       <button class="button" id="decimal">.</button>
       <button class="button digit" data-digit="0">0</button>
-      <button class="button" id="equals">=</button>
+      <button class="button equals" id="equals">=</button>
     </div>
+  </div>
+
+  <div id="history">
+    <h3>History</h3>
+    <ul id="history-list"></ul>
   </div>
 
   <script src="script.js"></script>
