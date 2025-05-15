@@ -1,119 +1,73 @@
-// Math functions
-function add(a, b) {
-  return a + b;
-}
-function subtract(a, b) {
-  return a - b;
-}
-function multiply(a, b) {
-  return a * b;
-}
-function divide(a, b) {
-  if (b === 0) return 'Error';
-  return a / b;
+const expressionInput = document.getElementById('expression');
+const resultDisplay = document.getElementById('result');
+const buttons = document.querySelectorAll('.button');
+const historyList = document.getElementById('history-list');
+
+let expression = '';
+
+function updateDisplay() {
+  expressionInput.value = expression;
 }
 
-// Operate function
-function operate(operator, a, b) {
-  a = Number(a);
-  b = Number(b);
-  switch (operator) {
-    case '+':
-      return add(a, b);
-    case '-':
-      return subtract(a, b);
-    case '*':
-      return multiply(a, b);
-    case '/':
-      return divide(a, b);
-    default:
-      return null;
+function evaluateExpression() {
+  try {
+    const result = eval(expression);
+    resultDisplay.textContent = result;
+    addToHistory(expression + ' = ' + result);
+    expression = result.toString();
+    updateDisplay();
+  } catch {
+    resultDisplay.textContent = 'Error';
   }
 }
 
-// Variables for operation
-let firstOperand = '';
-let secondOperand = '';
-let currentOperator = null;
-let shouldResetDisplay = false;
-
-// Display element
-const display = document.getElementById('display');
-
-// Button event listeners
-document.querySelectorAll('.digit').forEach((button) =>
-  button.addEventListener('click', () => appendNumber(button.dataset.digit))
-);
-
-document.querySelectorAll('.operator').forEach((button) =>
-  button.addEventListener('click', () => setOperator(button.dataset.operator))
-);
-
-document.getElementById('equals').addEventListener('click', evaluate);
-document.getElementById('clear').addEventListener('click', clearDisplay);
-document.getElementById('decimal').addEventListener('click', appendDecimal);
-document.getElementById('backspace').addEventListener('click', deleteNumber);
-
-window.addEventListener('keydown', handleKeyboardInput);
-
-function appendNumber(number) {
-  if (display.textContent === '0' || shouldResetDisplay) resetDisplay();
-  display.textContent += number;
+function addToHistory(entry) {
+  const li = document.createElement('li');
+  li.textContent = entry;
+  historyList.prepend(li);
+  if (historyList.children.length > 10) {
+    historyList.removeChild(historyList.lastChild);
+  }
 }
 
-function resetDisplay() {
-  display.textContent = '';
-  shouldResetDisplay = false;
-}
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const digit = btn.dataset.digit;
+    const operator = btn.dataset.operator;
 
-function clearDisplay() {
-  display.textContent = '0';
-  firstOperand = '';
-  secondOperand = '';
-  currentOperator = null;
-}
+    if (digit !== undefined) {
+      expression += digit;
+    } else if (operator !== undefined) {
+      expression += operator;
+    } else if (btn.id === 'decimal') {
+      expression += '.';
+    } else if (btn.id === 'clear') {
+      expression = '';
+      resultDisplay.textContent = '0';
+    } else if (btn.id === 'backspace') {
+      expression = expression.slice(0, -1);
+    } else if (btn.id === 'equals') {
+      evaluateExpression();
+      return;
+    }
 
-function appendDecimal() {
-  if (shouldResetDisplay) resetDisplay();
-  if (display.textContent.includes('.')) return;
-  display.textContent += '.';
-}
+    updateDisplay();
+  });
+});
 
-function deleteNumber() {
-  if (display.textContent.length === 1) {
-    display.textContent = '0';
+document.addEventListener('keydown', (e) => {
+  if ((e.key >= '0' && e.key <= '9') || ['+', '-', '*', '/', '.'].includes(e.key)) {
+    expression += e.key;
+  } else if (e.key === 'Enter') {
+    evaluateExpression();
+    return;
+  } else if (e.key === 'Backspace') {
+    expression = expression.slice(0, -1);
+  } else if (e.key === 'Escape') {
+    expression = '';
+    resultDisplay.textContent = '0';
   } else {
-    display.textContent = display.textContent.slice(0, -1);
+    return;
   }
-}
-
-function setOperator(operator) {
-  if (currentOperator !== null) evaluate();
-  firstOperand = display.textContent;
-  currentOperator = operator;
-  shouldResetDisplay = true;
-}
-
-function evaluate() {
-  if (currentOperator === null || shouldResetDisplay) return;
-  secondOperand = display.textContent;
-  display.textContent = roundResult(
-    operate(currentOperator, firstOperand, secondOperand)
-  );
-  currentOperator = null;
-}
-
-function roundResult(number) {
-  return Math.round(number * 1000) / 1000;
-}
-
-function handleKeyboardInput(e) {
-  if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
-  if (e.key === '.') appendDecimal();
-  if (e.key === '=' || e.key === 'Enter') evaluate();
-  if (e.key === 'Backspace') deleteNumber();
-  if (e.key === 'Escape') clearDisplay();
-  if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-    setOperator(e.key);
-  }
-}
+  updateDisplay();
+});
