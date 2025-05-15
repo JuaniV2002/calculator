@@ -4,9 +4,20 @@
 A sleek and user-friendly web-based calculator built with HTML, CSS, and JavaScript.
 
 ### Features
-- Basic arithmetic operations: addition, subtraction, multiplication, division.
-- Responsive design suitable for various devices.
-- Clean, modern UI with subtle animations and gradient buttons.
+- Evaluate full mathematical expressions (+, -, *, /, .)
+- Real-time editable expression display
+- Calculation history (last 10 expressions stored)
+- Functional control buttons:
+  - Clear (`C`)
+  - Backspace (`⌫`)
+  - Decimal (`.`)
+  - Equals (`=`)
+- Full keyboard support:
+  - Digits (0–9)
+  - Operators (+, -, *, /)
+  - Enter to calculate
+  - Backspace and Escape for editing/reset
+- Modern, responsive UI with clear visual hierarchy
 
 ### Usage
 [Click here!](https://juaniv2002.github.io/calculator/)
