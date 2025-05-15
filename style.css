@@ -1,31 +1,49 @@
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
   background: linear-gradient(135deg, #eceff1, #cfd8dc);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
+  padding: 20px;
 }
 
 #calculator {
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 320px;
+  margin-bottom: 30px;
 }
 
-#display {
-  background: #37474f;
-  color: #ffffff;
-  text-align: right;
+#display-container {
+  background: #263238;
   border-radius: 10px;
-  font-size: 2rem;
   padding: 15px;
   margin-bottom: 15px;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: white;
   overflow-x: auto;
+}
+
+#expression {
+  font-size: 1.2rem;
+  border: none;
+  background: transparent;
+  color: #b0bec5;
+  text-align: right;
+  outline: none;
+}
+
+#result {
+  font-size: 2rem;
+  text-align: right;
+  color: #ffffff;
 }
 
 #buttons {
@@ -35,34 +53,60 @@ body {
 }
 
 .button {
-  border: none;
-  background: linear-gradient(145deg, #eceff1, #b0bec5);
-  color: #37474f;
   height: 60px;
+  font-size: 1.4rem;
+  border: none;
   border-radius: 10px;
-  font-size: 1.5rem;
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.1s;
+  background: #eceff1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.button:active {
-  transform: translateY(2px);
-  box-shadow: none;
+.button:hover {
+  transform: translateY(-2px);
 }
 
 .operator {
   background: linear-gradient(145deg, #ff8a65, #ff7043);
-  color: #ffffff;
+  color: white;
 }
 
-#equals {
+.equals {
   background: linear-gradient(145deg, #26c6da, #00acc1);
-  color: #ffffff;
+  color: white;
   grid-column: span 2;
 }
 
 #clear,
 #backspace {
   background: linear-gradient(145deg, #ef5350, #e53935);
-  color: #ffffff;
+  color: white;
+}
+
+#history {
+  width: 320px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+}
+
+#history h3 {
+  margin-top: 0;
+  color: #37474f;
+}
+
+#history-list {
+  list-style: none;
+  padding-left: 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#history-list li {
+  font-size: 0.95rem;
+  padding: 6px 0;
+  border-bottom: 1px solid #ececec;
+  color: #546e7a;
 }
