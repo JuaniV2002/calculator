@@ -1,0 +1,17 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "A sleek and user-friendly web-based calculator built with HTML, CSS, and JavaScript.",
+  "main": "calc.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "jest": "^29.7.0",
+    "mathjs": "^14.5.2"
+  }
+}

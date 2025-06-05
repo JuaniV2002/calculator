@@ -14,24 +14,32 @@
     </div>
 
     <div id="buttons">
-      <button class="button" id="clear">C</button>
-      <button class="button" id="backspace">⌫</button>
-      <button class="button operator" data-operator="/">&divide;</button>
-      <button class="button operator" data-operator="*">&times;</button>
-      <button class="button digit" data-digit="7">7</button>
-      <button class="button digit" data-digit="8">8</button>
-      <button class="button digit" data-digit="9">9</button>
-      <button class="button operator" data-operator="-">-</button>
-      <button class="button digit" data-digit="4">4</button>
-      <button class="button digit" data-digit="5">5</button>
-      <button class="button digit" data-digit="6">6</button>
-      <button class="button operator" data-operator="+">+</button>
-      <button class="button digit" data-digit="1">1</button>
-      <button class="button digit" data-digit="2">2</button>
-      <button class="button digit" data-digit="3">3</button>
-      <button class="button" id="decimal">.</button>
-      <button class="button digit" data-digit="0">0</button>
-      <button class="button equals" id="equals">=</button>
+      <button class="button" id="clear" aria-label="clear">C</button>
+      <button class="button" id="backspace" aria-label="backspace">⌫</button>
+      <button class="button" data-operator="(" aria-label="open parenthesis">(</button>
+      <button class="button" data-operator=")" aria-label="close parenthesis">)</button>
+
+      <button class="button digit" data-digit="7" aria-label="seven">7</button>
+      <button class="button digit" data-digit="8" aria-label="eight">8</button>
+      <button class="button digit" data-digit="9" aria-label="nine">9</button>
+      <button class="button operator" data-operator="/" aria-label="divide">&divide;</button>
+
+      <button class="button digit" data-digit="4" aria-label="four">4</button>
+      <button class="button digit" data-digit="5" aria-label="five">5</button>
+      <button class="button digit" data-digit="6" aria-label="six">6</button>
+      <button class="button operator" data-operator="*" aria-label="multiply">&times;</button>
+
+      <button class="button digit" data-digit="1" aria-label="one">1</button>
+      <button class="button digit" data-digit="2" aria-label="two">2</button>
+      <button class="button digit" data-digit="3" aria-label="three">3</button>
+      <button class="button operator" data-operator="-" aria-label="minus">-</button>
+
+      <button class="button" id="decimal" aria-label="decimal">.</button>
+      <button class="button digit" data-digit="0" aria-label="zero">0</button>
+      <button class="button operator" data-operator="^" aria-label="exponent">^</button>
+      <button class="button operator" data-operator="+" aria-label="plus">+</button>
+
+      <button class="button equals" id="equals" aria-label="equals">=</button>
     </div>
   </div>
 
@@ -40,6 +48,8 @@
     <ul id="history-list"></ul>
   </div>
 
+  <script src="math.js"></script>
+  <script src="calc.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
