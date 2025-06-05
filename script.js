@@ -5,13 +5,32 @@ const historyList = document.getElementById('history-list');
 
 let expression = '';
 
+function loadHistory() {
+  const saved = JSON.parse(localStorage.getItem('history') || '[]');
+  saved.forEach(entry => {
+    const li = document.createElement('li');
+    li.textContent = entry;
+    historyList.appendChild(li);
+  });
+}
+
+function isOperator(ch) {
+  return ['+', '-', '*', '/', '^'].includes(ch);
+}
+
+function canAddDecimal() {
+  const parts = expression.split(/[+\-*/^()]/);
+  const last = parts[parts.length - 1];
+  return !last.includes('.');
+}
+
 function updateDisplay() {
   expressionInput.value = expression;
 }
 
 function evaluateExpression() {
   try {
-    const result = eval(expression);
+    const result = evaluate(expression);
     resultDisplay.textContent = result;
     addToHistory(expression + ' = ' + result);
     expression = result.toString();
@@ -28,6 +47,8 @@ function addToHistory(entry) {
   if (historyList.children.length > 10) {
     historyList.removeChild(historyList.lastChild);
   }
+  const entries = Array.from(historyList.querySelectorAll('li')).map(li => li.textContent);
+  localStorage.setItem('history', JSON.stringify(entries));
 }
 
 buttons.forEach(btn => {
@@ -38,9 +59,18 @@ buttons.forEach(btn => {
     if (digit !== undefined) {
       expression += digit;
     } else if (operator !== undefined) {
-      expression += operator;
+      if (operator === '(' || operator === ')') {
+        expression += operator;
+      } else {
+        if (expression === '' && operator !== '-') return;
+        if (isOperator(expression.slice(-1))) {
+          expression = expression.slice(0, -1) + operator;
+        } else {
+          expression += operator;
+        }
+      }
     } else if (btn.id === 'decimal') {
-      expression += '.';
+      if (canAddDecimal()) expression += '.';
     } else if (btn.id === 'clear') {
       expression = '';
       resultDisplay.textContent = '0';
@@ -56,7 +86,18 @@ buttons.forEach(btn => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if ((e.key >= '0' && e.key <= '9') || ['+', '-', '*', '/', '.'].includes(e.key)) {
+  if (e.key >= '0' && e.key <= '9') {
+    expression += e.key;
+  } else if (['+', '-', '*', '/', '^'].includes(e.key)) {
+    if (expression === '' && e.key !== '-') return;
+    if (isOperator(expression.slice(-1))) {
+      expression = expression.slice(0, -1) + e.key;
+    } else {
+      expression += e.key;
+    }
+  } else if (e.key === '.') {
+    if (canAddDecimal()) expression += '.';
+  } else if (e.key === '(' || e.key === ')') {
     expression += e.key;
   } else if (e.key === 'Enter') {
     evaluateExpression();
@@ -71,3 +112,5 @@ document.addEventListener('keydown', (e) => {
   }
   updateDisplay();
 });
+
+loadHistory();
