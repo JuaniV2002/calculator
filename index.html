@@ -3,41 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enhanced Calculator</title>
+  <title>Advanced Scientific Calculator</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="calculator">
-    <div id="display-container">
-      <input type="text" id="expression" readonly />
-      <div id="result">0</div>
+  <div class="container">
+    <header>
+      <h1>Scientific Calculator</h1>
+      <div class="controls">
+        <button id="theme-toggle" class="control-btn" title="Toggle Theme">🌙</button>
+        <button id="scientific-toggle" class="control-btn" title="Toggle Scientific Mode">🧮</button>
+        <button id="copy-result" class="control-btn" title="Copy Result">📋</button>
+      </div>
+    </header>
+
+    <div id="calculator" class="calculator">
+      <div id="display-container">
+        <div id="expression-container">
+          <input type="text" id="expression" readonly />
+          <button id="clear-expression" title="Clear Expression">×</button>
+        </div>
+        <div id="result">0</div>
+        <div id="memory-indicator" class="hidden">M</div>
+      </div>
+
+      <div id="memory-buttons" class="memory-section">
+        <button class="button memory-btn" id="memory-clear">MC</button>
+        <button class="button memory-btn" id="memory-recall">MR</button>
+        <button class="button memory-btn" id="memory-add">M+</button>
+        <button class="button memory-btn" id="memory-subtract">M-</button>
+      </div>
+
+      <div id="scientific-buttons" class="scientific-section hidden">
+        <button class="button function" data-function="sin">sin</button>
+        <button class="button function" data-function="cos">cos</button>
+        <button class="button function" data-function="tan">tan</button>
+        <button class="button function" data-function="log">log</button>
+        <button class="button function" data-function="ln">ln</button>
+        <button class="button function" data-function="sqrt">√</button>
+        <button class="button function" data-function="pow">x²</button>
+        <button class="button function" data-function="abs">|x|</button>
+        <button class="button constant" data-constant="π">π</button>
+        <button class="button constant" data-constant="e">e</button>
+        <button class="button operator" data-operator="(">(</button>
+        <button class="button operator" data-operator=")">)</button>
+      </div>
+
+      <div id="buttons">
+        <button class="button" id="clear">AC</button>
+        <button class="button" id="backspace">⌫</button>
+        <button class="button operator" data-operator="/">&divide;</button>
+        <button class="button operator" data-operator="*">&times;</button>
+        
+        <button class="button digit" data-digit="7">7</button>
+        <button class="button digit" data-digit="8">8</button>
+        <button class="button digit" data-digit="9">9</button>
+        <button class="button operator" data-operator="-">-</button>
+        
+        <button class="button digit" data-digit="4">4</button>
+        <button class="button digit" data-digit="5">5</button>
+        <button class="button digit" data-digit="6">6</button>
+        <button class="button operator" data-operator="+">+</button>
+        
+        <button class="button digit" data-digit="1">1</button>
+        <button class="button digit" data-digit="2">2</button>
+        <button class="button digit" data-digit="3">3</button>
+        <button class="button" id="decimal">.</button>
+        
+        <button class="button digit zero" data-digit="0">0</button>
+        <button class="button equals" id="equals">=</button>
+      </div>
     </div>
 
-    <div id="buttons">
-      <button class="button" id="clear">C</button>
-      <button class="button" id="backspace">⌫</button>
-      <button class="button operator" data-operator="/">&divide;</button>
-      <button class="button operator" data-operator="*">&times;</button>
-      <button class="button digit" data-digit="7">7</button>
-      <button class="button digit" data-digit="8">8</button>
-      <button class="button digit" data-digit="9">9</button>
-      <button class="button operator" data-operator="-">-</button>
-      <button class="button digit" data-digit="4">4</button>
-      <button class="button digit" data-digit="5">5</button>
-      <button class="button digit" data-digit="6">6</button>
-      <button class="button operator" data-operator="+">+</button>
-      <button class="button digit" data-digit="1">1</button>
-      <button class="button digit" data-digit="2">2</button>
-      <button class="button digit" data-digit="3">3</button>
-      <button class="button" id="decimal">.</button>
-      <button class="button digit" data-digit="0">0</button>
-      <button class="button equals" id="equals">=</button>
+    <div id="history" class="history-panel">
+      <div class="history-header">
+        <h3>History</h3>
+        <button id="clear-history" class="control-btn" title="Clear History">🗑️</button>
+      </div>
+      <ul id="history-list"></ul>
     </div>
-  </div>
-
-  <div id="history">
-    <h3>History</h3>
-    <ul id="history-list"></ul>
   </div>
 
   <script src="script.js"></script>
